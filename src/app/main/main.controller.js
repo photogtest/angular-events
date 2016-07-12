@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(moment) {
+  function MainController(moment, $scope) {
        
         var self = this;
 
@@ -16,11 +16,14 @@
         self.currentDay     = '';
         self.view = 'month';
         self.today = moment().startOf('month').toDate();
+        self.currentPage = 1;
+        self.maxSize = 10;
         
         /////// METHODS ////////
-        self.dateClicked = dateClicked;
-        self.setDetailedData = setDetailedData;
-        self.resetData   = resetData;
+        self.dateClicked            = dateClicked;
+        self.setDetailedData        = setDetailedData;
+        self.resetData              = resetData;
+        self.pageChange             = pageChange;
         activate();
         /////// DEFINITIONS ////////
 
@@ -169,6 +172,9 @@
          */
         function dateClicked(date){
             self.setDetailedData(date);
+            self.currentPage = 1;
+            self.pageChange();
+            
         }
         /**
          * get the events data
@@ -198,8 +204,12 @@
             console.log('reset data');
         }
      
-            
-        
+                
+        function  pageChange() {
+            var begin = ((self.currentPage - 1) * self.maxSize);
+            var end = begin + self.maxSize;
+            self.filteredData = self.detailedData.slice(begin, end);
+        }
 
   }
 })();

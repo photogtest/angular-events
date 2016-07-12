@@ -87,7 +87,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr data-ng-repeat="event in main.detailedData">
+                                <tr data-ng-repeat="event in main.filteredData">
                                     <td class="text-left">
                                         <span >{{event.title}}</span>
                                     </td>
@@ -112,6 +112,15 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <pagination 
+                            ng-model="main.currentPage"
+                            data-ng-change="main.pageChange()"
+                            
+                            total-items="main.detailedData.length"
+                            max-size="main.maxSize"  
+                            boundary-links="true">
+                        </pagination>
+
                            <label data-ng-hide="main.detailedData.length">There is no events for this day</label>
                     </div>
                 </div>
