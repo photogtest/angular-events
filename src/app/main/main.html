@@ -1,6 +1,131 @@
 <div class="container">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed = true">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#"  data-ng-click="main.resetData();">Reset</a></li>
+                <li><a href="#">Add</a></li>
+                <li class="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
     <h1>Angular Events</h1>
-   
-    
+    <br>
 
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row text-center">
+                <div class="btn-group">
+                    <button
+                        class="btn btn-primary"
+                        mwl-date-modifier
+                        date="main.today"
+                        decrement="main.view">
+                        Previous
+                    </button>
+                    <button
+                        class="btn btn-default"
+                        mwl-date-modifier
+                        date="main.today"
+                        set-to-today>
+                        Today
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        mwl-date-modifier
+                        date="main.today"
+                        increment="main.view">
+                        Next
+                    </button>
+                </div>
+                <br>
+            </div>
+            <mwl-calendar
+                view="main.view"
+                view-date="main.today"
+                events="main.events"
+                view-title="angular_events"
+                edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+                delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+                on-edit-event-click="main.eventEdited(calendarEvent)"
+                on-delete-event-click="main.eventDeleted(calendarEvent)"
+                on-timespan-click="main.dateClicked(calendarDate);"
+                custom-template-urls="{calendarMonthCell: 'customMonthCell.html'}"
+                cell-is-open="false">
+            </mwl-calendar>
+
+        </div>
+        <div class="col-sm-6 text-center">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Events for 2016/06/12</h3>
+                </div>
+                <div class="panel-body">
+                    <label>There is no events for this day</label>
+                </div>
+                <div class="panel-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script id="customMonthCell.html" type="text/ng-template">
+        <div class="cal-month-day">
+        <span
+        class="pull-right"
+        data-cal-date
+        ng-click="main.calendarCtrl.dateClicked(day.date)"
+        ng-bind="day.label">
+        </span>
+        <small style="position: absolute; bottom: 10px; left: 5px">
+        {{ day.events.length }} events
+        </small>
+        </div>
+    </script>
 </div>

@@ -3,6 +3,6 @@
 
   angular
     .module('angularEvents', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
-'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr', 'ui.calendar']);
+'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap', 'toastr', 'mwl.calendar']);
 
 })();
