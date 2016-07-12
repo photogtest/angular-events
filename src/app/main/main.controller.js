@@ -31,135 +31,168 @@
         function activate() {
             self.events = [
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
-                    title: 'Non-draggable event',
+                    title: 'Event Title',
+                    price: '$ 200',
                     type: 'info',
-                    startsAt: moment().startOf('month').add(1, 'day').toDate()
-                }
+                    startsAt: moment().startOf('month').toDate()
+                },
+                {
+                    title: 'Event Title',
+                    price: '$ 200',
+                    type: 'info',
+                    startsAt: moment().startOf('month').toDate()
+                },
+                
             ];
             self.setDetailedData(moment());
         }
