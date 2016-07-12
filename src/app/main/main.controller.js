@@ -11,9 +11,11 @@
         var self = this;
 
         /////// VARS ////////
-        self.events = [];
+        self.events         = [];
+        self.detailedData   = [];
+        self.currentDay     = '2016/06/12';
         self.view = 'month';
-        self.today = moment().startOf('month').toDate();;
+        self.today = moment().startOf('month').toDate();
         
         /////// METHODS ////////
         self.dateClicked = dateClicked;
@@ -35,7 +37,6 @@
          */
         function dateClicked(date){
             console.log('Click date: ' + date);
-          
         }
         /**
          * get the events data

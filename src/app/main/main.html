@@ -71,17 +71,50 @@
                 custom-template-urls="{calendarMonthCell: 'customMonthCell.html'}"
                 cell-is-open="false">
             </mwl-calendar>
-
         </div>
         <div class="col-sm-6 text-center">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Events for 2016/06/12</h3>
+                    <h3  class="panel-title">Events for {{main.currentDay}}</h3>
                 </div>
                 <div class="panel-body">
-                    <label>There is no events for this day</label>
-                </div>
-                <div class="panel-footer">
+                    <label data-ng-hide="main.detailedData.length">There is no events for this day</label>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped  table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">tittle</th>
+                                    <th class="text-center">price</th>
+                                    <th class="text-right">Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="event in main.detailedData">
+                                    <td class="text-center">
+                                        <span >event.title</span>
+                                    </td>
+                                    <td class="text-right">
+
+                                        <button class="btn btn-xs btn-success">
+                                            <span class="fa fa-file-text-o"></span>
+                                            View
+                                        </button>
+                                        <button class="btn btn-xs btn-success">
+                                            <span class="fa fa-file-text-o"></span>
+                                            edit
+                                        </button>
+                                        <button class="btn btn-xs btn-success">
+                                            <span class="fa fa-file-text-o"></span>
+                                            delete
+                                        </button>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,7 +156,7 @@
         ng-click="main.calendarCtrl.dateClicked(day.date)"
         ng-bind="day.label">
         </span>
-        <small style="position: absolute; bottom: 10px; left: 5px">
+        <small data-ng-show="day.events.length" style="position: absolute; bottom: 10px; left: 5px">
         {{ day.events.length }} events
         </small>
         </div>
