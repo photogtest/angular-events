@@ -14,6 +14,7 @@
         /////// METHODS ////////
         self.cancel     = cancel;
         self.submmit    = submmit;
+        self.remove     = remove;
 
 
         /////// DEFINITIONS ////////
@@ -23,6 +24,9 @@
         
         function submmit (data){
             $modalInstance.close(data);
+        }
+        function remove (){
+            $modalInstance.close();
         }
         
     }

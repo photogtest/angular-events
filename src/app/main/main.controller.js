@@ -25,13 +25,13 @@
         self.resetData              = resetData;
         self.pageChange             = pageChange;
         self.addEvent               = addEvent;
+        self.deleteEvent            = deleteEvent;
         activate();
         /////// DEFINITIONS ////////
 
 
         function activate() {
             self.events = LocalStorageService.get();
-            console.log(self.events);
             self.setDetailedData(moment());
         }
         
@@ -57,10 +57,11 @@
             self.detailedData   = [];
             var formatedDate = moment(date);
             self.currentDay = formatedDate.format("MMM Do YY");
-            angular.forEach(self.events, function(event) {
+            angular.forEach(self.events, function(event, $index) {
                 var diff = date - new Date(event.startsAt);
                 if (diff == 0){
-                    self.detailedData.push(event)
+                    event.index = $index;
+                    self.detailedData.push(event);
                 }
             });
         }
@@ -87,11 +88,6 @@
         }
         
         
-        
-        
-        
-        
-        
         function addEvent() {
             var modalInstance = $modal.open({
                 animation: true,
@@ -100,20 +96,37 @@
                 controllerAs: 'ModalCtrl',
                 size: 'lg',
                 resolve: {
-                    items: function () {
-                        return $scope.items;
-                    }
+                   
                 }
             });
             modalInstance.result.then(function (data) {
-                console.log(data);
                 LocalStorageService.store(data);
+                data.startsAt = new Date(data.startsAt);
+                self.events.push(data);
+                self.setDetailedData( new Date(self.currentDay));
             }, function () {
             });
         };
 
         
-        
+        function deleteEvent(index) {
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'app/modals/modalDelete.html',
+                controller: 'ModalController',
+                controllerAs: 'ModalCtrl',
+                size: 'lg',
+                resolve: {
+                }
+            });
+            modalInstance.result.then(function (data) {
+                LocalStorageService.remove(index);
+                self.events = LocalStorageService.get();
+                self.setDetailedData(self.currentDay);
+            }, function () {
+            });
+
+        }
 
   }
 })();
