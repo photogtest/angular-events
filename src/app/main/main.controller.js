@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(moment, $scope) {
+  function MainController(moment, $scope, LocalStorageService) {
        
         var self = this;
 
@@ -187,6 +187,7 @@
                     startsAt: moment().startOf('month').toDate()
                 },
                 {
+                    
                     title: 'Event Title',
                     price: '$ 200',
                     type: 'info',
