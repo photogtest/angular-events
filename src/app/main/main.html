@@ -79,7 +79,7 @@
                         <table class="table table-condensed table-striped  table-hover">
                             <thead>
                                 <tr>
-                                    <th class="text-center">title</th>
+                                    <th class="text-left">title</th>
                                     <th class="text-left">price</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
@@ -90,18 +90,10 @@
                                         <span >{{event.title}}</span>
                                     </td>
                                     <td class="text-left">
-                                       <i class="fa fa-usd" aria-hidden="true"></i><span>{{event.price}}</span>
+                                      <i class="fa fa-usd" aria-hidden="true"></i> <span>{{event.price}}</span>
                                     </td>
                                     <td class="text-right">
-                                        <button class="btn btn-xs btn-success">
-                                            <span class="fa fa-file-text-o"></span>
-                                            View
-                                        </button>
-                                        <button class="btn btn-xs btn-warning">
-                                            <span class="fa fa-file-text-o"></span>
-                                            edit
-                                        </button>
-                                        <button data-ng-click="main.deleteEvent(event.index);" class="btn btn-xs btn-danger">
+                                        <button data-ng-click="main.deleteEvent(event);" class="btn btn-xs btn-danger">
                                             <span class="fa fa-file-text-o"></span>
                                             delete
                                         </button>
@@ -109,6 +101,18 @@
 
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Total</span>
+                                    </td>
+                                    <td class="text-left">
+                                       <i class="fa fa-usd" aria-hidden="true"></i> <span>{{main.detailedData.totalSum}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                    </td>
+                                </tr>
+                            </tfoot>
                         </table>
                         <pagination 
                             data-ng-show="main.detailedData.length"
@@ -126,6 +130,10 @@
             </div>
         </div>
     </div>
+    <div class="text-center">
+        <br>
+        <div ng-repeat="alert in main.alerts" class="alert alert-success" role="alert">{{alert.msg}}</div>
+    </div>
     <script id="customMonthCell.html" type="text/ng-template">
         <div class="cal-month-day">
         <span
@@ -139,4 +147,5 @@
         </small>
         </div>
     </script>
+   
 </div>

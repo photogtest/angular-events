@@ -23,18 +23,28 @@
             }
             var response = [];
             angular.forEach(service.$storage.events, function (event) {
-                if (event !=null){
+                if (event != null){
                     event.startsAt = new Date(event.startsAt);
                     response.push(event);
                 }
             });
             return response;
         }
-        function remove(index){
-            delete service.$storage.events[index];
+        function remove(data){
+            var deleteKey = null;
+            angular.forEach(service.$storage.events, function (event, key) {
+                if (event != null && event.title==data.title && event.startsAt == data.startsAt){
+                    deleteKey = key;
+                }
+            });
+             delete service.$storage.events[deleteKey];
         }
         function store(data){
-            service.$storage.events.push(data);
+            console.log(data);
+            if (data!==null){
+                service.$storage.events.push(data);
+            }
+            console.log(service.$storage.events);
         }
         function reset(){
             $localStorage.$reset();
