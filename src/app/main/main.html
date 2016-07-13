@@ -1,0 +1,151 @@
+<div class="container">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Home</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed = true">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#"  data-ng-click="main.resetData();">Reset</a></li>
+                <li><a data-ng-click="main.addEvent()" href="#">Add</a></li>
+                <li class="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <h1>Angular Events</h1>
+    <br>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row text-right">
+                <div class="btn-group">
+                    <button
+                        class="btn btn-primary"
+                        mwl-date-modifier
+                        date="main.today"
+                        decrement="main.view">
+                        Previous
+                    </button>
+                    <button
+                        class="btn btn-default"
+                        mwl-date-modifier
+                        date="main.today"
+                        set-to-today>
+                        Today
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        mwl-date-modifier
+                        date="main.today"
+                        increment="main.view">
+                        Next
+                    </button>
+                </div>
+                <br>
+            </div>
+            <mwl-calendar
+                view="main.view"
+                view-date="main.today"
+                events="main.events"
+                view-title="angular_events"
+                on-timespan-click="main.dateClicked(calendarDate);"
+                custom-template-urls="{calendarMonthCell: 'customMonthCell.html'}"
+                slide-box-disabled="true"
+                >
+            </mwl-calendar>
+        </div>
+        <div class="col-sm-6 text-center">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3  class="panel-title">Events for {{main.currentDay}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped  table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">title</th>
+                                    <th class="text-left">price</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="event in main.filteredData">
+                                    <td class="text-left">
+                                        <span >{{event.title}}</span>
+                                    </td>
+                                    <td class="text-left">
+                                      <i class="fa fa-usd" aria-hidden="true"></i> <span>{{event.price}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                        <button data-ng-click="main.deleteEvent(event);" class="btn btn-xs btn-danger">
+                                            <span class="fa fa-file-text-o"></span>
+                                            delete
+                                        </button>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td class="text-left">
+                                        <span>Total</span>
+                                    </td>
+                                    <td class="text-left">
+                                       <i class="fa fa-usd" aria-hidden="true"></i> <span>{{main.detailedData.totalSum}}</span>
+                                    </td>
+                                    <td class="text-right">
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <pagination 
+                            data-ng-show="main.detailedData.length"
+                            ng-model="main.currentPage"
+                            data-ng-change="main.pageChange()"
+                            
+                            total-items="main.detailedData.length"
+                            max-size="main.maxSize"  
+                            boundary-links="true">
+                        </pagination>
+
+                           <label data-ng-hide="main.detailedData.length">There is no events for this day</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <br>
+        <div ng-repeat="alert in main.alerts" class="alert alert-success" role="alert">{{alert.msg}}</div>
+    </div>
+    <script id="customMonthCell.html" type="text/ng-template">
+        <div class="cal-month-day">
+        <span
+        class="pull-right"
+        data-cal-date
+        ng-click="main.calendarCtrl.dateClicked(day.date)"
+        ng-bind="day.label">
+        </span>
+        <small data-ng-show="day.events.length" style="position: absolute; bottom: 10px; left: 5px">
+        {{ day.events.length }} events
+        </small>
+        </div>
+    </script>
+   
+</div>
