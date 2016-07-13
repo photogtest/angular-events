@@ -4,6 +4,5 @@
     angular
         .module('angularEvents.common', [
            'ngStorage'
-            
         ]);
 })();

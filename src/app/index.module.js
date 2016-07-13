@@ -6,7 +6,7 @@
 
 'ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize',
 'ngMessages', 'ngAria', 'ui.router', 'ui.bootstrap',
-'toastr', 'mwl.calendar','angularEvents.common'
+'toastr', 'mwl.calendar','angularEvents.common','angularEvents.modals'
 
 ]);
 })();

@@ -29,172 +29,7 @@
 
 
         function activate() {
-            self.events = [
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                {
-                    
-                    title: 'Event Title',
-                    price: '$ 200',
-                    type: 'info',
-                    startsAt: moment().startOf('month').toDate()
-                },
-                
-            ];
+            self.events = LocalStorageService.get();
             self.setDetailedData(moment());
         }
         
@@ -221,12 +56,12 @@
             var formatedDate = moment(date);
             self.currentDay = formatedDate.format("MMM Do YY");
             angular.forEach(self.events, function(event) {
-                var diff = date - event.startsAt;
+                var diff = date - new Date(event.startsAt);
                 if (diff == 0){
                     self.detailedData.push(event)
                 }
             });
-        }   
+        }
         
         
         /**
@@ -235,7 +70,11 @@
          * @returns {undefined}
          */
         function  resetData(){
-            console.log('reset data');
+           console.log('reset data');
+           LocalStorageService.reset;
+           self.detailedData   = [];
+           self.events   = [];
+           
         }
      
                 

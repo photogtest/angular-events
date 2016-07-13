@@ -6,28 +6,41 @@
     .service('LocalStorageService', LocalStorageService);
 
   
-  function LocalStorageService() {
+  function LocalStorageService($localStorage, moment) {
       var service = {
             //Resources
             get: get,
             remove: remove,
             store: store,
             update: update,
+            reset: reset,
+            
+            $storage : $localStorage,
+            
+       
+            
+            
         };
 
         return service;
         
+        
         function get(){
+            return service.$storage.events;
             
         }
-        function remove(){
+        function remove(index){
             
         }
-        function store(){
+        function store(data){
             
         }
-        function update(){
+        function update(index, data){
             
+        }
+        
+        function reset(){
+            $localStorage.$reset();
         }
         
 
