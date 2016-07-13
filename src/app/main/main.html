@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'" ng-click="navCollapsed = true">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#"  data-ng-click="main.resetData();">Reset</a></li>
-                <li><a href="#">Add</a></li>
+                <li><a data-ng-click="main.addEvent()" href="#">Add</a></li>
                 <li class="dropdown">
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>

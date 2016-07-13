@@ -3,6 +3,6 @@
 
     angular
         .module('angularEvents.modals', [
-         
+         'ui.bootstrap'
         ]);
 })();

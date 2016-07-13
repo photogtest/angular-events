@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(moment, $scope, LocalStorageService) {
+  function MainController(moment, $scope, LocalStorageService, $modal) {
        
         var self = this;
 
@@ -24,12 +24,14 @@
         self.setDetailedData        = setDetailedData;
         self.resetData              = resetData;
         self.pageChange             = pageChange;
+        self.addEvent               = addEvent;
         activate();
         /////// DEFINITIONS ////////
 
 
         function activate() {
             self.events = LocalStorageService.get();
+            console.log(self.events);
             self.setDetailedData(moment());
         }
         
@@ -71,7 +73,7 @@
          */
         function  resetData(){
            console.log('reset data');
-           LocalStorageService.reset;
+           LocalStorageService.reset();
            self.detailedData   = [];
            self.events   = [];
            
@@ -83,6 +85,35 @@
             var end = begin + self.maxSize;
             self.filteredData = self.detailedData.slice(begin, end);
         }
+        
+        
+        
+        
+        
+        
+        
+        function addEvent() {
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'app/modals/modalAdd.html',
+                controller: 'ModalController',
+                controllerAs: 'ModalCtrl',
+                size: 'lg',
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
+            modalInstance.result.then(function (data) {
+                console.log(data);
+                LocalStorageService.store(data);
+            }, function () {
+            });
+        };
+
+        
+        
 
   }
 })();
